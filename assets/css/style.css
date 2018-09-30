@@ -60,6 +60,14 @@ img {
 
 @media screen and (max-width: 375px) {
   img {
+    right: 30px;
     height: 24%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  img {
+    right: 30px;
+    height: 23%;
   }
 }
