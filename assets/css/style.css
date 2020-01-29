@@ -49,25 +49,3 @@ a {
 #logo {
   color: #7A7C80;
 }
-
-img {
-  position: absolute;
-  right: 20px;
-  bottom: 40px;
-  transition: opacity 0.5s ease 0s;
-  height: 35%;
-}
-
-@media screen and (max-width: 375px) {
-  img {
-    right: 30px;
-    height: 24%;
-  }
-}
-
-@media screen and (max-width: 414px) {
-  img {
-    right: 30px;
-    height: 23%;
-  }
-}
