@@ -1,0 +1,43 @@
+**Q1**
+
+a. The AOV calculated may not have accounted for potential outliers, human errors or data processing errors in the relevant values (in this case, ‘order_amount’).
+
+Since this is a relatively small dataset, it might be helpful to first sort the data sheet for the order_amount to look for any unusually high values. For example, shop_id 42 and 78 appear to be consistently associated with the much larger (more than 10 times) order_amount values compared to other shop_id’s. For instance, several entries for shop_id 42 seem to be from the same user_id 607 for the same order_amount and total_items values and for the same time, with duplicate entries on certain dates. 
+
+A better way could be to use cluster analysis, or we could simply segregate the data by shop_id and graph their respective median order amount values in a box plot or scatterplot
+
+b. Compared to the overall average, the overall median would be closer to capturing the value we are looking for. However, a good balance would be to take the average of the median values across all clusters (different shop ids).
+
+c. ~299.68
+
+**Q2**
+
+a. 54 orders
+
+SELECT COUNT (DISTINCT OrderID) FROM [Orders] as o
+LEFT JOIN [Shippers] as s
+ON o.ShipperID = s.ShipperID
+WHERE s.ShipperName = 'Speedy Express'
+
+b. Peacock
+
+SELECT LastName FROM [Orders] as o
+LEFT JOIN Employees as e
+on e.EmployeeID = o.EmployeeID
+GROUP BY o.EmployeeID
+ORDER BY COUNT(OrderID) DESC
+LIMIT 1
+
+c. Boston Crab Meat (in terms of total units sold)
+
+SELECT ProductName FROM [Products]
+WHERE ProductID in (
+	SELECT ProductID FROM [Orders] as o
+	LEFT JOIN [Customers] as c
+	ON o.CustomerID = c.CustomerID
+	LEFT JOIN [OrderDetails] as od
+	on o.OrderID = od.OrderID
+	WHERE C.Country = 'Germany'
+    	GROUP BY ProductID
+    	ORDER BY SUM(Quantity) DESC
+   	LIMIT 1 )
