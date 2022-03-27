@@ -32,6 +32,7 @@ h1, h2 {
 
 #sasa {
   text-align: center;
+  margin-top: 1rem;
 }
 
 #sasa p {
@@ -48,4 +49,10 @@ a {
 
 #logo {
   color: #7A7C80;
+}
+
+img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 100%;
 }
